@@ -30,7 +30,7 @@ The **Lunch Decision App** frontend is a React-based web application that facili
 ### Clone the Repository
 
 ```bash
-git clone https://github.com/sajithgunarathna/lunch-decision-app-frontend.git
+git clone https://github.com/sajithgunarathna/lunch-decision-app-frontend1.git
 cd lunch-decision-app-frontend
 
 Install Dependencies
