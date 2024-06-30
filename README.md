@@ -1,70 +1,147 @@
-# Getting Started with Create React App
+# Lunch Decision App - React Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+The **Lunch Decision App** frontend is a React-based web application that facilitates group lunch decisions by allowing users to create sessions, suggest restaurants, and vote for their preferred options. This frontend interacts with the Spring Boot backend to manage user sessions and restaurant suggestions.
 
+## Features
+
+- **User Registration**: Sign up new users.
+- **User Authentication**: Login existing users.
+- **Session Management**: Create or join lunch decision sessions.
+- **Restaurant Suggestions**: Add and view restaurant suggestions within a session.
+- **Session Conclusion**: End a session and view the picked restaurant.
+
+## Technologies Used
+
+- **React 18**: A JavaScript library for building user interfaces.
+- **React Router DOM**: For routing within the application.
+- **Axios**: For making HTTP requests to the backend.
+- **React Hooks**: For state and effect management.
+- **CSS**: For styling components.
+
+## Prerequisites
+
+- **Node.js**: Ensure you have Node.js installed (version 16 or later is recommended).
+- **npm**: Node Package Manager, usually comes with Node.js.
+
+## Getting Started
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/sajithgunarathna/lunch-decision-app-frontend.git
+cd lunch-decision-app-frontend
+
+Install Dependencies
+Install the necessary npm packages:
+
+bash
+Copy code
+npm install
+Run the Application
+Start the React development server:
+
+bash
+Copy code
+npm start
+This will start the application on http://localhost:3000.
+
+Available Scripts
 In the project directory, you can run:
 
-### `npm start`
+npm start: Runs the app in the development mode.
+npm test: Launches the test runner in the interactive watch mode.
+npm run build: Builds the app for production to the build folder.
+npm run eject: Removes the single build dependency from your project.
+Project Structure
+php
+Copy code
+lunch-decision-app-frontend/
+│
+├── public/
+│   ├── index.html         # Main HTML template
+│   └── ...
+│
+├── src/
+│   ├── components/        # Reusable components
+│   ├── pages/             # Pages representing different views
+│   ├── services/          # Axios configuration and API services
+│   ├── App.js             # Main application component
+│   ├── index.js           # Main entry point
+│   └── ...
+│
+└── package.json           # Project metadata and dependencies
+Important Files and Directories
+src/components: Contains reusable React components.
+src/pages: Contains the main pages of the application (e.g., Home, Session, Login).
+src/services: Contains the Axios configuration and services for API calls.
+src/App.js: The main component that sets up routes and renders the app.
+src/index.js: The entry point that renders the React app to the DOM.
+API Endpoints
+The frontend communicates with the backend via several API endpoints. Below are some of the key endpoints:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+User Registration: POST /api/users
+User Login: POST /login (handled by Spring Security in the backend)
+Create Session: POST /api/sessions
+Join Session: POST /api/sessions/{sessionId}/user/{userId}
+Add Restaurant: POST /api/restaurants/session/{sessionId}/user/{userId}
+End Session: POST /api/sessions/{sessionId}/end
+Refer to the backend README for detailed API documentation.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Environment Variables
+The application can be configured using environment variables. Create a .env file in the root directory and add your variables:
 
-### `npm test`
+arduino
+Copy code
+REACT_APP_API_URL=http://localhost:8080
+Make sure to restart the development server after modifying the .env file.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Deployment
+Build for Production
+To create a production build, run:
 
-### `npm run build`
+bash
+Copy code
+npm run build
+This will create an optimized build in the build directory.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Deploying to a Static Server
+After building, you can deploy the build directory to any static file server. For example, using Nginx or Apache.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Deploying to GitHub Pages
+To deploy to GitHub Pages, follow these steps:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Update the homepage field in package.json with your repository URL:
 
-### `npm run eject`
+json
+Copy code
+"homepage": "https://your-username.github.io/lunch-decision-app-frontend",
+Install the gh-pages package:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+bash
+Copy code
+npm install gh-pages --save-dev
+Add the following scripts to your package.json:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+json
+Copy code
+"scripts": {
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d build"
+}
+Deploy the app:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+bash
+Copy code
+npm run deploy
+This will deploy your build directory to GitHub Pages.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+License
+This project is licensed under the MIT License. See the LICENSE file for more details.
 
-## Learn More
+Contact
+For any questions, support, or contributions, please contact:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Email: [sajith.gunarathna@gmail.com.com]
+GitHub: sajithgunarathna
